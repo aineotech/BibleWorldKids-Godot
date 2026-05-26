@@ -5,8 +5,8 @@ class_name ControleurPNJ extends ObjetInteractif
 @export var vitesse:           float = 80.0
 @export var temps_attente:     float = 2.0
 
-@onready var _corps: CharacterBody2D = $"."  # le nœud parent doit être CharacterBody2D
-@onready var _animateur: AnimationPlayer = $AnimationPlayer
+@onready var _corps: CharacterBody2D = get_parent()  # le nœud parent doit être CharacterBody2D
+@onready var _animateur: AnimationPlayer = get_node_or_null("AnimationPlayer")
 
 var _indice_cible: int   = 0
 var _en_attente:   bool  = false

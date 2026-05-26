@@ -4,10 +4,12 @@ extends Node
 signal debut_chargement
 signal fin_chargement
 
-@export var scene_ecran_chargement: PackedScene
-
+var scene_ecran_chargement: PackedScene = null
 var _en_chargement: bool = false
 var _ecran: Node = null
+
+func _ready() -> void:
+	scene_ecran_chargement = load(Constantes.SCENE_CHARGEMENT)
 
 func charger_scene(chemin: String) -> void:
 	if _en_chargement:

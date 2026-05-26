@@ -6,7 +6,6 @@ const LONGUEUR   := 4
 @onready var panneau:    Control = $Panneau
 @onready var affichage:  Label   = $Panneau/Affichage
 @onready var message:    Label   = $Panneau/Message
-@onready var boutons:    Array   = []   # remplir via get_children() dans _ready
 
 var _saisie:  String = ""
 var _creation: bool  = false
@@ -16,6 +15,23 @@ var _cfg := ConfigFile.new()
 func _ready() -> void:
 	panneau.visible = false
 	_cfg.load(Constantes.FICHIER_PREFERENCES)
+	_connecter_clavier()
+
+func _connecter_clavier() -> void:
+	var grille := panneau.get_node_or_null("ClavierPIN")
+	if grille == null:
+		return
+	for enfant in grille.get_children():
+		if enfant is Button:
+			match enfant.text:
+				"⌫": enfant.pressed.connect(effacer)
+				"OK": enfant.pressed.connect(valider)
+				_:
+					var chiffre := enfant.text
+					enfant.pressed.connect(func(): ajouter_chiffre(chiffre))
+	var btn_fermer := panneau.get_node_or_null("BtnFermer")
+	if btn_fermer:
+		btn_fermer.pressed.connect(fermer)
 
 func ouvrir() -> void:
 	_saisie  = ""

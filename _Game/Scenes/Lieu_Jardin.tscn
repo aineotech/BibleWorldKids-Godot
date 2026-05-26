@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/GestionnaireLieu.gd" id="1_lieu"]
+[ext_resource type="Script" path="res://_Game/Scripts/Joueur/ControleurAvatar.gd" id="2_avatar"]
+[ext_resource type="Script" path="res://_Game/Scripts/UI/UIDialogue.gd" id="3_dial"]
+[ext_resource type="Script" path="res://_Game/Scripts/Audio/ZoneMusique.gd" id="4_zone"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(2048, 2048)
+
+[node name="Lieu_Jardin" type="Node2D"]
+script = ExtResource("1_lieu")
+id_lieu = "jardin"
+
+[node name="Fond" type="ColorRect" parent="."]
+position = Vector2(-1024, -1024)
+size = Vector2(2048, 2048)
+color = Color(0.22, 0.62, 0.28, 1.0)
+
+[node name="Avatar" type="CharacterBody2D" parent="."]
+script = ExtResource("2_avatar")
+position = Vector2(540, 960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Avatar"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Avatar"]
+
+[node name="Camera2D" type="Camera2D" parent="Avatar"]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="UIDialogue" type="Control" parent="UILayer"]
+script = ExtResource("3_dial")
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Conteneur" type="Panel" parent="UILayer/UIDialogue"]
+anchor_left = 0.0
+anchor_top = 0.70
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Portrait" type="TextureRect" parent="UILayer/UIDialogue/Conteneur"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.15
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NomLocuteur" type="Label" parent="UILayer/UIDialogue/Conteneur"]
+anchor_left = 0.16
+anchor_top = 0.0
+anchor_right = 0.85
+anchor_bottom = 0.35
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
+
+[node name="Texte" type="Label" parent="UILayer/UIDialogue/Conteneur"]
+anchor_left = 0.16
+anchor_top = 0.35
+anchor_right = 0.85
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+text = ""
+autowrap_mode = 3
+
+[node name="BoutonSuite" type="Button" parent="UILayer/UIDialogue/Conteneur"]
+anchor_left = 0.86
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = ">"
+
+[node name="ZoneMusique" type="Area2D" parent="."]
+script = ExtResource("4_zone")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneMusique"]
+shape = SubResource("RectangleShape2D_1")
+position = Vector2(540, 960)

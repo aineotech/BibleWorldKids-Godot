@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Joueur/PersonnalisationAvatar.gd" id="1_perso"]
+[ext_resource type="Script" path="res://_Game/Scripts/UI/UIPersonnalisation.gd" id="2_ui"]
+
+[node name="CreateurAvatar" type="Control"]
+script = ExtResource("2_ui")
+anchor_right = 1.0
+anchor_bottom = 1.0
+avatar = NodePath("Apercu/Avatar")
+
+[node name="Fond" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.24, 0.42, 1.0)
+
+[node name="Apercu" type="SubViewportContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Apercu"]
+
+[node name="Avatar" type="Node2D" parent="Apercu/SubViewport"]
+script = ExtResource("1_perso")
+couche_corps = NodePath("Corps")
+couche_vetement = NodePath("Vetement")
+couche_cheveux = NodePath("Cheveux")
+couche_accessoire = NodePath("Accessoire")
+
+[node name="Corps" type="Sprite2D" parent="Apercu/SubViewport/Avatar"]
+
+[node name="Vetement" type="Sprite2D" parent="Apercu/SubViewport/Avatar"]
+
+[node name="Cheveux" type="Sprite2D" parent="Apercu/SubViewport/Avatar"]
+
+[node name="Accessoire" type="Sprite2D" parent="Apercu/SubViewport/Avatar"]
+
+[node name="Controles" type="VBoxContainer" parent="."]
+anchor_left = 0.05
+anchor_top = 0.57
+anchor_right = 0.95
+anchor_bottom = 0.92
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LigneCarnation" type="HBoxContainer" parent="Controles"]
+size_flags_horizontal = 3
+
+[node name="LblCarnation" type="Label" parent="Controles/LigneCarnation"]
+text = "Carnation"
+size_flags_horizontal = 3
+
+[node name="BtnCarnationMoins" type="Button" parent="Controles/LigneCarnation"]
+text = "<"
+
+[node name="BtnCarnationPlus" type="Button" parent="Controles/LigneCarnation"]
+text = ">"
+
+[node name="LigneCheveux" type="HBoxContainer" parent="Controles"]
+size_flags_horizontal = 3
+
+[node name="LblCheveux" type="Label" parent="Controles/LigneCheveux"]
+text = "Cheveux"
+size_flags_horizontal = 3
+
+[node name="BtnCheveuxMoins" type="Button" parent="Controles/LigneCheveux"]
+text = "<"
+
+[node name="BtnCheveuxPlus" type="Button" parent="Controles/LigneCheveux"]
+text = ">"
+
+[node name="LigneTenue" type="HBoxContainer" parent="Controles"]
+size_flags_horizontal = 3
+
+[node name="LblTenue" type="Label" parent="Controles/LigneTenue"]
+text = "Tenue"
+size_flags_horizontal = 3
+
+[node name="BtnTenueMoins" type="Button" parent="Controles/LigneTenue"]
+text = "<"
+
+[node name="BtnTenuePlus" type="Button" parent="Controles/LigneTenue"]
+text = ">"
+
+[node name="BtnConfirmer" type="Button" parent="."]
+anchor_left = 0.25
+anchor_top = 0.93
+anchor_right = 0.75
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+text = "Confirmer"
