@@ -22,6 +22,7 @@ GestionnaireAudio="*res://autoloads/GestionnaireAudio.gd"
 SystemeDialogues="*res://autoloads/SystemeDialogues.gd"
 Inventaire="*res://_Game/Scripts/Joueur/Inventaire.gd"
 GestionnaireQuetes="*res://_Game/Scripts/Quetes/GestionnaireQuetes.gd"
+UINotifications="*res://autoloads/UINotifications.gd"
 
 [display]
 

@@ -2,7 +2,7 @@ class_name ControleurAvatar extends CharacterBody2D
 
 @export var vitesse: float = Constantes.VITESSE_AVATAR
 
-@onready var _animateur: AnimationTree = $AnimationTree
+@onready var _animateur: AnimationTree = get_node_or_null("AnimationTree") as AnimationTree
 
 func _ready() -> void:
 	add_to_group(Constantes.GROUP_JOUEUR)

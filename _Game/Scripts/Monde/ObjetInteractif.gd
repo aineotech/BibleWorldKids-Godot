@@ -3,7 +3,7 @@ class_name ObjetInteractif extends Area2D
 
 signal interaction_declenchee
 
-@export var indicateur_proximite: Node2D  # nœud "!" affiché en proximité
+@export var indicateur_proximite: CanvasItem  # nœud "!" affiché en proximité (Node2D ou Control)
 
 var _joueur_present: bool = false
 

@@ -9,15 +9,12 @@ func _ready() -> void:
 func _demarrer() -> void:
 	await get_tree().create_timer(delai_min_boot).timeout
 
-	var premier_lancement: bool = not ProjectSettings.has_setting(
-		Constantes.PREF_PREMIER_LANCEMENT)
-
 	SystemeSauvegarde.charger()
 
-	if premier_lancement:
-		ProjectSettings.set_setting(Constantes.PREF_PREMIER_LANCEMENT, true)
-		var id := _generer_id()
-		SystemeSauvegarde.initialiser_nouveau_joueur(id)
+	# Le fichier de sauvegarde est la source de vérité :
+	# s'il n'existe pas, c'est vraiment un nouveau joueur.
+	if SystemeSauvegarde.donnees_courantes == null:
+		SystemeSauvegarde.initialiser_nouveau_joueur(_generer_id())
 		ChargeurScene.charger_scene(Constantes.SCENE_CREATEUR)
 	else:
 		ChargeurScene.charger_scene(Constantes.SCENE_MENU)

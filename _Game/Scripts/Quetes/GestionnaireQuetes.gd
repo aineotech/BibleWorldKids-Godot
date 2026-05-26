@@ -9,6 +9,8 @@ signal quete_terminee(quete: Object)
 var _progression: Dictionary = {}
 
 func _ready() -> void:
+	# Se recharger quand la sauvegarde est lue (autoload — init avant Boot)
+	SystemeSauvegarde.sauvegarde_chargee.connect(_charger_depuis_sauvegarde)
 	_charger_depuis_sauvegarde()
 
 func _charger_depuis_sauvegarde() -> void:
