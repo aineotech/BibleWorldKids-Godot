@@ -1,12 +1,17 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://_Game/Scripts/Monde/GestionnaireLieu.gd" id="1_lieu"]
 [ext_resource type="Script" path="res://_Game/Scripts/Joueur/ControleurAvatar.gd" id="2_avatar"]
 [ext_resource type="Script" path="res://_Game/Scripts/UI/UIDialogue.gd" id="3_dial"]
 [ext_resource type="Script" path="res://_Game/Scripts/Audio/ZoneMusique.gd" id="4_zone"]
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/ControleurPNJ.gd" id="5_pnj"]
+[ext_resource type="Resource" path="res://_Game/Resources/Dialogues/pnj_simeon.tres" id="6_simeon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2"]
+radius = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(2048, 2048)
@@ -27,12 +32,45 @@ position = Vector2(540, 960)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Avatar"]
 shape = SubResource("CircleShape2D_1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Avatar"]
+[node name="Visu" type="ColorRect" parent="Avatar"]
+position = Vector2(-16, -32)
+size = Vector2(32, 48)
+color = Color(0.96, 0.76, 0.50, 1.0)
 
 [node name="Camera2D" type="Camera2D" parent="Avatar"]
 
+[node name="PNJ_Simeon" type="CharacterBody2D" parent="."]
+position = Vector2(680, 900)
+
+[node name="ColFisica" type="CollisionShape2D" parent="PNJ_Simeon"]
+shape = SubResource("CircleShape2D_1")
+
+[node name="Visu" type="ColorRect" parent="PNJ_Simeon"]
+position = Vector2(-16, -32)
+size = Vector2(32, 48)
+color = Color(0.60, 0.35, 0.10, 1.0)
+
+[node name="Indicateur" type="Label" parent="PNJ_Simeon"]
+position = Vector2(-8, -52)
+text = "!"
+
+[node name="ControleurPNJ" type="Area2D" parent="PNJ_Simeon"]
+script = ExtResource("5_pnj")
+donnees_pnj = ExtResource("6_simeon")
+indicateur_proximite = NodePath("../Indicateur")
+
+[node name="ColInteraction" type="CollisionShape2D" parent="PNJ_Simeon/ControleurPNJ"]
+shape = SubResource("CircleShape2D_2")
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="BtnRetour" type="Button" parent="UILayer"]
+anchor_right = 0.3
+anchor_bottom = 0.08
+grow_horizontal = 2
+grow_vertical = 2
+text = "< Carte"
 
 [node name="UIDialogue" type="Control" parent="UILayer"]
 script = ExtResource("3_dial")

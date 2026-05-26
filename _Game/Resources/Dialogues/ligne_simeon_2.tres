@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LigneDialogue" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/LigneDialogue.gd" id="1_ld"]
+
+[resource]
+script = ExtResource("1_ld")
+nom_locuteur = "Siméon"
+texte = "Elle s'appelle Neigeuse. Elle est toute blanche avec une petite tache noire sur le nez. Elle ne peut pas être allée très loin…"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogueSO" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/DialogueSO.gd" id="1_ds"]
+[ext_resource type="Resource" path="res://_Game/Resources/Dialogues/ligne_simeon_1.tres" id="2_l1"]
+[ext_resource type="Resource" path="res://_Game/Resources/Dialogues/ligne_simeon_2.tres" id="3_l2"]
+[ext_resource type="Resource" path="res://_Game/Resources/Dialogues/ligne_simeon_3.tres" id="4_l3"]
+
+[resource]
+script = ExtResource("1_ds")
+lignes = [ExtResource("2_l1"), ExtResource("3_l2"), ExtResource("4_l3")]

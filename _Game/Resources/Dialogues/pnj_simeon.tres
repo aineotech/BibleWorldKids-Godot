@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PNJSO" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/PNJSO.gd" id="1_pnj"]
+[ext_resource type="Resource" path="res://_Game/Resources/Dialogues/dialogue_simeon_principal.tres" id="2_dial"]
+
+[resource]
+script = ExtResource("1_pnj")
+pnj_id = "simeon"
+nom_affichage = "Siméon"
+dialogue_principal = ExtResource("2_dial")
