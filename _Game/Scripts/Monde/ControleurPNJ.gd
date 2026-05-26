@@ -46,7 +46,10 @@ func _attendre_et_avancer() -> void:
 	_en_attente = false
 
 func _interagir() -> void:
-	if donnees_pnj == null or donnees_pnj.dialogue_principal == null:
+	if donnees_pnj == null:
 		return
 	interaction_declenchee.emit()
-	SystemeDialogues.lancer_dialogue(donnees_pnj.dialogue_principal)
+	if donnees_pnj.dialogue_principal:
+		SystemeDialogues.lancer_dialogue(donnees_pnj.dialogue_principal)
+	if donnees_pnj.quete:
+		GestionnaireQuetes.demarrer_quete(donnees_pnj.quete)

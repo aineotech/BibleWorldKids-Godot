@@ -10,13 +10,16 @@ var _touch_origine: Vector2 = Vector2.ZERO
 var _touch_actif:   bool    = false
 
 func _process(_delta: float) -> void:
-	# Réinitialiser les one-shot chaque frame
-	action_principale  = false
-	action_secondaire  = false
 	# Lecture clavier / gamepad (fallback éditeur)
 	if not _touch_actif:
 		direction_mouvement = Input.get_vector(
 			"ui_left", "ui_right", "ui_up", "ui_down")
+	# Réinitialiser les one-shot EN FIN de frame (deferred) pour que les
+	# scènes puissent lire les valeurs dans leur propre _process() cette frame
+	if action_principale:
+		set_deferred("action_principale", false)
+	if action_secondaire:
+		set_deferred("action_secondaire", false)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:

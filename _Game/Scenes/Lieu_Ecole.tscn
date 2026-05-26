@@ -27,12 +27,22 @@ position = Vector2(540, 960)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Avatar"]
 shape = SubResource("CircleShape2D_1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Avatar"]
+[node name="Visu" type="ColorRect" parent="Avatar"]
+position = Vector2(-16, -32)
+size = Vector2(32, 48)
+color = Color(0.96, 0.76, 0.50, 1.0)
 
 [node name="Camera2D" type="Camera2D" parent="Avatar"]
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = 10
+
+[node name="BtnRetour" type="Button" parent="UILayer"]
+anchor_right = 0.3
+anchor_bottom = 0.08
+grow_horizontal = 2
+grow_vertical = 2
+text = "< Carte"
 
 [node name="UIDialogue" type="Control" parent="UILayer"]
 script = ExtResource("3_dial")

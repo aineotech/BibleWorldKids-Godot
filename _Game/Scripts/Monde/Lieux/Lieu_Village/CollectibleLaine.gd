@@ -1,13 +1,12 @@
 extends ObjetInteractif
+# Brebis perdue — ramasser complète une étape de quête.
 
-@export var objet_laine:         ObjetSO
-@export var quete_brebis:        QueteSO
-@export var inventaire:          Inventaire
-@export var gestionnaire_quetes: GestionnaireQuetes
+@export var objet_laine:  ObjetSO
+@export var quete_brebis: QueteSO
 
 func _interagir() -> void:
-	if not inventaire.ajouter_objet(objet_laine):
+	if not Inventaire.ajouter_objet(objet_laine):
 		return
 	interaction_declenchee.emit()
-	gestionnaire_quetes.valider_etape(quete_brebis)
-	visible = false  # la touffe disparaît une fois ramassée
+	GestionnaireQuetes.valider_etape(quete_brebis)
+	visible = false  # la brebis disparaît une fois retrouvée

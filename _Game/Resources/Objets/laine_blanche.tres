@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ObjetSO" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/ObjetSO.gd" id="1_obj"]
+
+[resource]
+script = ExtResource("1_obj")
+objet_id = "laine_blanche"
+nom_affichage = "Toison de Neigeuse"
+categorie = 3
+est_debloquable = false

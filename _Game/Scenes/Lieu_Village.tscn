@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://_Game/Scripts/Monde/GestionnaireLieu.gd" id="1_lieu"]
 [ext_resource type="Script" path="res://_Game/Scripts/Joueur/ControleurAvatar.gd" id="2_avatar"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://_Game/Scripts/Audio/ZoneMusique.gd" id="4_zone"]
 [ext_resource type="Script" path="res://_Game/Scripts/Monde/ControleurPNJ.gd" id="5_pnj"]
 [ext_resource type="Resource" path="res://_Game/Resources/Dialogues/pnj_simeon.tres" id="6_simeon"]
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/Lieux/Lieu_Village/CollectibleLaine.gd" id="7_cl"]
+[ext_resource type="Resource" path="res://_Game/Resources/Objets/laine_blanche.tres" id="8_laine"]
+[ext_resource type="Resource" path="res://_Game/Resources/Quetes/quete_brebis_perdue.tres" id="9_quete"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1"]
 radius = 16.0
@@ -60,6 +63,24 @@ donnees_pnj = ExtResource("6_simeon")
 indicateur_proximite = NodePath("../Indicateur")
 
 [node name="ColInteraction" type="CollisionShape2D" parent="PNJ_Simeon/ControleurPNJ"]
+shape = SubResource("CircleShape2D_2")
+
+[node name="Neigeuse" type="Area2D" parent="."]
+script = ExtResource("7_cl")
+objet_laine = ExtResource("8_laine")
+quete_brebis = ExtResource("9_quete")
+position = Vector2(350, 750)
+
+[node name="Visu" type="ColorRect" parent="Neigeuse"]
+position = Vector2(-14, -20)
+size = Vector2(28, 36)
+color = Color(0.95, 0.95, 0.95, 1.0)
+
+[node name="Etiquette" type="Label" parent="Neigeuse"]
+position = Vector2(-24, -38)
+text = "Neigeuse ?"
+
+[node name="ColInteraction" type="CollisionShape2D" parent="Neigeuse"]
 shape = SubResource("CircleShape2D_2")
 
 [node name="UILayer" type="CanvasLayer" parent="."]

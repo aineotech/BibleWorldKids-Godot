@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ObjetSO" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Monde/ObjetSO.gd" id="1_obj"]
+
+[resource]
+script = ExtResource("1_obj")
+objet_id = "carte_brebis_perdue"
+nom_affichage = "Carte : La brebis perdue"
+categorie = 2
+verset_lie = "Luc 15:5"
+est_debloquable = true

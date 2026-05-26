@@ -1,8 +1,9 @@
-class_name Inventaire extends Node
+extends Node
+# Autoload "Inventaire" — gère l'inventaire du joueur via SystemeSauvegarde.
 
 signal inventaire_modifie
 
-func ajouter_objet(objet: ObjetSO) -> bool:
+func ajouter_objet(objet) -> bool:
 	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null or donnees.inventaire.has(objet.objet_id):
 		return false

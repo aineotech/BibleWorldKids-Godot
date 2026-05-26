@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="QueteSO" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://_Game/Scripts/Quetes/QueteSO.gd" id="1_qs"]
+[ext_resource type="Resource" path="res://_Game/Resources/Quetes/etape_brebis_1.tres" id="2_et"]
+[ext_resource type="Resource" path="res://_Game/Resources/Objets/carte_brebis_perdue.tres" id="3_rwd"]
+
+[resource]
+script = ExtResource("1_qs")
+quete_id = "brebis_perdue"
+titre = "La brebis perdue"
+description = "Siméon a perdu sa brebis Neigeuse. Aide-le à la retrouver dans la prairie !"
+etapes = [ExtResource("2_et")]
+recompense = ExtResource("3_rwd")
+verset_completion = "Luc 15:5"
