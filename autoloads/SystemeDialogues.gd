@@ -2,16 +2,19 @@ extends Node
 # Autoload "SystemeDialogues" — flux de dialogue piloté par signaux.
 # UIDialogue se connecte à ces signaux — aucune référence directe.
 
-signal dialogue_demarre(dialogue: DialogueSO)
-signal ligne_changee(ligne: LigneDialogue)
+const _DialogueSO    = preload("res://_Game/Scripts/Monde/DialogueSO.gd")
+const _LigneDialogue = preload("res://_Game/Scripts/Monde/LigneDialogue.gd")
+
+signal dialogue_demarre(dialogue: Object)
+signal ligne_changee(ligne: Object)
 signal dialogue_termine
 
 var dialogue_en_cours: bool = false
 
-var _dialogue_courant: DialogueSO = null
-var _indice_ligne:     int        = 0
+var _dialogue_courant = null  # type : DialogueSO
+var _indice_ligne:     int   = 0
 
-func lancer_dialogue(dialogue: DialogueSO) -> void:
+func lancer_dialogue(dialogue) -> void:
 	if dialogue_en_cours or dialogue == null or dialogue.lignes.is_empty():
 		return
 	_dialogue_courant = dialogue

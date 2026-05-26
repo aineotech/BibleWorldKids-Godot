@@ -3,7 +3,9 @@ extends Node
 
 signal sauvegarde_chargee
 
-var donnees_courantes: DonneesJoueur = null
+const _DonneesJoueur = preload("res://_Game/Scripts/Core/DonneesJoueur.gd")
+
+var donnees_courantes = null  # type : DonneesJoueur
 
 func charger() -> void:
 	if FileAccess.file_exists(Constantes.FICHIER_SAUVEGARDE):
@@ -11,7 +13,7 @@ func charger() -> void:
 		var json := JSON.parse_string(file.get_as_text())
 		file.close()
 		if json is Dictionary:
-			donnees_courantes = DonneesJoueur.depuis_dict(json)
+			donnees_courantes = _DonneesJoueur.depuis_dict(json)
 	sauvegarde_chargee.emit()
 
 func sauvegarder() -> void:
@@ -23,6 +25,6 @@ func sauvegarder() -> void:
 	# Firebase sync : stub — à implémenter avec GodotFirebase en Phase 2
 
 func initialiser_nouveau_joueur(id_joueur: String) -> void:
-	donnees_courantes = DonneesJoueur.new()
+	donnees_courantes = _DonneesJoueur.new()
 	donnees_courantes.id_joueur = id_joueur
 	sauvegarder()
