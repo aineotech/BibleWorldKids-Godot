@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
 [node name="Titre" type="Label" parent="VBox"]
 custom_minimum_size = Vector2(0, 60)
@@ -33,9 +33,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EspaceAvatar" type="Control" parent="VBox"]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 150)
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Avatar" type="Node2D" parent="VBox/EspaceAvatar"]
 script = ExtResource("1_perso")
@@ -43,7 +42,6 @@ couche_corps = NodePath("Corps")
 couche_vetement = NodePath("Vetement")
 couche_cheveux = NodePath("Cheveux")
 couche_accessoire = NodePath("Accessoire")
-position = Vector2(540, 60)
 
 [node name="Corps" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
@@ -54,7 +52,7 @@ position = Vector2(540, 60)
 [node name="Accessoire" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
 [node name="LigneCarnation" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 55)
+custom_minimum_size = Vector2(0, 60)
 size_flags_horizontal = 3
 
 [node name="LblCarnation" type="Label" parent="VBox/LigneCarnation"]
@@ -63,15 +61,15 @@ size_flags_horizontal = 3
 vertical_alignment = 1
 
 [node name="BtnCarnationMoins" type="Button" parent="VBox/LigneCarnation"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " < "
 
 [node name="BtnCarnationPlus" type="Button" parent="VBox/LigneCarnation"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " > "
 
 [node name="LigneCheveux" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 55)
+custom_minimum_size = Vector2(0, 60)
 size_flags_horizontal = 3
 
 [node name="LblCheveux" type="Label" parent="VBox/LigneCheveux"]
@@ -80,15 +78,15 @@ size_flags_horizontal = 3
 vertical_alignment = 1
 
 [node name="BtnCheveuxMoins" type="Button" parent="VBox/LigneCheveux"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " < "
 
 [node name="BtnCheveuxPlus" type="Button" parent="VBox/LigneCheveux"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " > "
 
 [node name="LigneTenue" type="HBoxContainer" parent="VBox"]
-custom_minimum_size = Vector2(0, 55)
+custom_minimum_size = Vector2(0, 60)
 size_flags_horizontal = 3
 
 [node name="LblTenue" type="Label" parent="VBox/LigneTenue"]
@@ -97,14 +95,14 @@ size_flags_horizontal = 3
 vertical_alignment = 1
 
 [node name="BtnTenueMoins" type="Button" parent="VBox/LigneTenue"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " < "
 
 [node name="BtnTenuePlus" type="Button" parent="VBox/LigneTenue"]
-custom_minimum_size = Vector2(80, 55)
+custom_minimum_size = Vector2(80, 60)
 text = " > "
 
 [node name="BtnConfirmer" type="Button" parent="VBox"]
-custom_minimum_size = Vector2(0, 65)
+custom_minimum_size = Vector2(0, 70)
 size_flags_horizontal = 3
 text = "Confirmer  >"
