@@ -9,7 +9,7 @@ class_name PersonnalisationAvatar extends Node2D
 var _config: Dictionary = {"carnation": 0, "id_cheveux": "", "id_tenue": ""}
 
 func _ready() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees:
 		appliquer_config(donnees.config_avatar)
 
@@ -38,7 +38,7 @@ func appliquer_objet(objet: ObjetSO) -> void:
 				couche_cheveux.texture = objet.icone
 
 func sauvegarder() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null:
 		return
 	donnees.config_avatar = _config.duplicate()

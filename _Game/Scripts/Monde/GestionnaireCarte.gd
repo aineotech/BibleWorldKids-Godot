@@ -5,7 +5,7 @@ func _ready() -> void:
 	_actualiser_boutons()
 
 func _actualiser_boutons() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null:
 		return
 	for bouton in get_tree().get_nodes_in_group("bouton_lieu"):
@@ -13,7 +13,7 @@ func _actualiser_boutons() -> void:
 			bouton.actualiser(donnees.lieux_debloques)
 
 func debloquer_lieu(id_lieu: String) -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null or donnees.lieux_debloques.has(id_lieu):
 		return
 	donnees.lieux_debloques.append(id_lieu)

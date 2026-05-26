@@ -13,7 +13,7 @@ func _ready() -> void:
 	_charger_depuis_sauvegarde()
 
 func _charger_depuis_sauvegarde() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null:
 		return
 	for id in donnees.quetes_terminees:
@@ -43,7 +43,7 @@ func est_terminee(quete_id: String) -> bool:
 
 func _terminer_quete(quete: QueteSO) -> void:
 	_progression[quete.quete_id] = -1
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees and not donnees.quetes_terminees.has(quete.quete_id):
 		donnees.quetes_terminees.append(quete.quete_id)
 		SystemeSauvegarde.sauvegarder()

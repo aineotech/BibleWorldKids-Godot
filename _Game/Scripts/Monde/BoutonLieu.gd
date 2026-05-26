@@ -15,7 +15,7 @@ func actualiser(lieux_debloques: Array[String]) -> void:
 		visu_verouille.visible = not debloque
 
 func _actualiser() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null:
 		return
 	actualiser(donnees.lieux_debloques)

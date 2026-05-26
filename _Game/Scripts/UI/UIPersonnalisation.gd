@@ -10,7 +10,7 @@ var _idx_cheveux:  int = 0
 var _idx_tenue:    int = 0
 
 func _ready() -> void:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees != null:
 		_carnation   = donnees.config_avatar.get("carnation", 0)
 		_idx_cheveux = _trouver_index(options_cheveux, donnees.config_avatar.get("id_cheveux",""))

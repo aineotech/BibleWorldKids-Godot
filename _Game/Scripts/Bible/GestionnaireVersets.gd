@@ -27,12 +27,12 @@ func verset_aleatoire() -> VersetSO:
 func collecter_verset(verset: VersetSO) -> void:
 	if verset == null:
 		return
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	if donnees == null or donnees.versets_collectes.has(verset.verset_id):
 		return
 	donnees.versets_collectes.append(verset.verset_id)
 	SystemeSauvegarde.sauvegarder()
 
 func est_collecte(verset_id: String) -> bool:
-	var donnees := SystemeSauvegarde.donnees_courantes
+	var donnees = SystemeSauvegarde.donnees_courantes
 	return donnees != null and donnees.versets_collectes.has(verset_id)
