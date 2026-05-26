@@ -10,7 +10,7 @@ var donnees_courantes = null  # type : DonneesJoueur
 func charger() -> void:
 	if FileAccess.file_exists(Constantes.FICHIER_SAUVEGARDE):
 		var file := FileAccess.open(Constantes.FICHIER_SAUVEGARDE, FileAccess.READ)
-		var json := JSON.parse_string(file.get_as_text())
+		var json: Variant = JSON.parse_string(file.get_as_text())
 		file.close()
 		if json is Dictionary:
 			donnees_courantes = _DonneesJoueur.depuis_dict(json)

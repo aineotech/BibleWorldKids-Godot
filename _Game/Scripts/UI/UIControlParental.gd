@@ -23,12 +23,13 @@ func _connecter_clavier() -> void:
 		return
 	for enfant in grille.get_children():
 		if enfant is Button:
-			match enfant.text:
-				"⌫": enfant.pressed.connect(effacer)
-				"OK": enfant.pressed.connect(valider)
+			var btn := enfant as Button
+			match btn.text:
+				"⌫": btn.pressed.connect(effacer)
+				"OK": btn.pressed.connect(valider)
 				_:
-					var chiffre := enfant.text
-					enfant.pressed.connect(func(): ajouter_chiffre(chiffre))
+					var chiffre: String = btn.text
+					btn.pressed.connect(func(): ajouter_chiffre(chiffre))
 	var btn_fermer := panneau.get_node_or_null("BtnFermer")
 	if btn_fermer:
 		btn_fermer.pressed.connect(fermer)

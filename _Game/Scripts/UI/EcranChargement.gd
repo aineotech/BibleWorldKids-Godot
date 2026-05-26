@@ -1,12 +1,14 @@
 extends CanvasLayer
 # Overlaye toutes les scènes pendant le chargement.
+# Le fondu passe par le Control enfant "Panneau" (CanvasLayer n'a pas modulate).
 
-@onready var barre:       ProgressBar = $Barre
-@onready var texte:       Label       = $Texte
-@export var conseils:     Array[String] = []
+@onready var _panneau:  Control     = $Panneau
+@onready var barre:     ProgressBar = $Panneau/Barre
+@onready var texte:     Label       = $Panneau/Texte
+@export   var conseils: Array[String] = []
 
 func _ready() -> void:
-	modulate.a = 0.0
+	_panneau.modulate.a = 0.0
 	add_to_group(Constantes.GROUP_CHARGEMENT)
 	if not conseils.is_empty() and texte:
 		texte.text = conseils[randi() % conseils.size()]
@@ -23,5 +25,5 @@ func disparaitre(duree: float = Constantes.DUREE_FONDU) -> void:
 
 func _fonder_vers(cible: float, duree: float) -> void:
 	var tween := create_tween()
-	tween.tween_property(self, "modulate:a", cible, duree)
+	tween.tween_property(_panneau, "modulate:a", cible, duree)
 	await tween.finished
