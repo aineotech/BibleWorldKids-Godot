@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-avatar = NodePath("Avatar")
+avatar = NodePath("VBox/EspaceAvatar/Avatar")
 
 [node name="Fond" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -18,94 +18,93 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18, 0.24, 0.42, 1.0)
 
-[node name="Titre" type="Label" parent="."]
-anchor_left = 0.0
-anchor_top = 0.02
+[node name="VBox" type="VBoxContainer" parent="."]
 anchor_right = 1.0
-anchor_bottom = 0.1
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="Titre" type="Label" parent="VBox"]
+custom_minimum_size = Vector2(0, 60)
+size_flags_horizontal = 3
 text = "Crée ton personnage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Avatar" type="Node2D" parent="."]
+[node name="EspaceAvatar" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 120)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Avatar" type="Node2D" parent="VBox/EspaceAvatar"]
 script = ExtResource("1_perso")
 couche_corps = NodePath("Corps")
 couche_vetement = NodePath("Vetement")
 couche_cheveux = NodePath("Cheveux")
 couche_accessoire = NodePath("Accessoire")
-position = Vector2(540, 500)
+position = Vector2(540, 60)
 
-[node name="Corps" type="Sprite2D" parent="Avatar"]
+[node name="Corps" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
-[node name="Vetement" type="Sprite2D" parent="Avatar"]
+[node name="Vetement" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
-[node name="Cheveux" type="Sprite2D" parent="Avatar"]
+[node name="Cheveux" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
-[node name="Accessoire" type="Sprite2D" parent="Avatar"]
+[node name="Accessoire" type="Sprite2D" parent="VBox/EspaceAvatar/Avatar"]
 
-[node name="Controles" type="VBoxContainer" parent="."]
-anchor_left = 0.05
-anchor_top = 0.62
-anchor_right = 0.95
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 8
-
-[node name="LigneCarnation" type="HBoxContainer" parent="Controles"]
-custom_minimum_size = Vector2(0, 60)
+[node name="LigneCarnation" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 55)
 size_flags_horizontal = 3
 
-[node name="LblCarnation" type="Label" parent="Controles/LigneCarnation"]
-text = "Carnation"
+[node name="LblCarnation" type="Label" parent="VBox/LigneCarnation"]
+text = "  Carnation"
 size_flags_horizontal = 3
 vertical_alignment = 1
 
-[node name="BtnCarnationMoins" type="Button" parent="Controles/LigneCarnation"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnCarnationMoins" type="Button" parent="VBox/LigneCarnation"]
+custom_minimum_size = Vector2(80, 55)
 text = " < "
 
-[node name="BtnCarnationPlus" type="Button" parent="Controles/LigneCarnation"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnCarnationPlus" type="Button" parent="VBox/LigneCarnation"]
+custom_minimum_size = Vector2(80, 55)
 text = " > "
 
-[node name="LigneCheveux" type="HBoxContainer" parent="Controles"]
-custom_minimum_size = Vector2(0, 60)
+[node name="LigneCheveux" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 55)
 size_flags_horizontal = 3
 
-[node name="LblCheveux" type="Label" parent="Controles/LigneCheveux"]
-text = "Cheveux"
+[node name="LblCheveux" type="Label" parent="VBox/LigneCheveux"]
+text = "  Cheveux"
 size_flags_horizontal = 3
 vertical_alignment = 1
 
-[node name="BtnCheveuxMoins" type="Button" parent="Controles/LigneCheveux"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnCheveuxMoins" type="Button" parent="VBox/LigneCheveux"]
+custom_minimum_size = Vector2(80, 55)
 text = " < "
 
-[node name="BtnCheveuxPlus" type="Button" parent="Controles/LigneCheveux"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnCheveuxPlus" type="Button" parent="VBox/LigneCheveux"]
+custom_minimum_size = Vector2(80, 55)
 text = " > "
 
-[node name="LigneTenue" type="HBoxContainer" parent="Controles"]
-custom_minimum_size = Vector2(0, 60)
+[node name="LigneTenue" type="HBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(0, 55)
 size_flags_horizontal = 3
 
-[node name="LblTenue" type="Label" parent="Controles/LigneTenue"]
-text = "Tenue"
+[node name="LblTenue" type="Label" parent="VBox/LigneTenue"]
+text = "  Tenue"
 size_flags_horizontal = 3
 vertical_alignment = 1
 
-[node name="BtnTenueMoins" type="Button" parent="Controles/LigneTenue"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnTenueMoins" type="Button" parent="VBox/LigneTenue"]
+custom_minimum_size = Vector2(80, 55)
 text = " < "
 
-[node name="BtnTenuePlus" type="Button" parent="Controles/LigneTenue"]
-custom_minimum_size = Vector2(80, 60)
+[node name="BtnTenuePlus" type="Button" parent="VBox/LigneTenue"]
+custom_minimum_size = Vector2(80, 55)
 text = " > "
 
-[node name="BtnConfirmer" type="Button" parent="Controles"]
+[node name="BtnConfirmer" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 65)
 size_flags_horizontal = 3
-custom_minimum_size = Vector2(0, 70)
-text = "Confirmer >"
+text = "Confirmer  >"
